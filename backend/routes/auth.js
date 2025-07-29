@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
       res.status(200).json({ 
         id: user.id,
         name: user.name,
-        surname: user.password,
+        surname: user.surname,
         email: user.email,
         jwt_token: token
       });

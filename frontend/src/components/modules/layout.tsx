@@ -137,7 +137,7 @@ export function Layout({ children }: LayoutProps) {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">
-                      {user?.name}
+                       {user?.name} {user?.surname}
                     </p>
                     <p className="text-xs text-gray-500 truncate">
                       {user?.email}
@@ -165,7 +165,7 @@ export function Layout({ children }: LayoutProps) {
                   {/* Tooltip */}
                   {!hovered && (
                     <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-50">
-                      {user?.name}
+                      {user?.name} {user?.surname}
                     </div>
                   )}
                 </div>
