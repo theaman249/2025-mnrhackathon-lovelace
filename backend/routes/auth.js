@@ -19,7 +19,7 @@ const users = [
 ];
 
 router.post('/login', async (req, res) => {
-    console.log('Login request received:', req.body);
+    //console.log('Login request received:', req.body);
     try {
         const { email, password } = req.body;
         const user = users.find(u => u.email === email);

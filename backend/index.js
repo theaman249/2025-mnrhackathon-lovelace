@@ -21,3 +21,5 @@ app.use('/dashboard', dashboardRoute);
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+module.exports = app;;
