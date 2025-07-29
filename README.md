@@ -19,10 +19,10 @@ Atlas is a comprehensive platform for managing travel risk alerts and assessment
 ## Atlas Features
 
 ### Authentication and Authorization
-Secure user authentication system with role-based access control. Users can login, and access features. JWT tokens ensure secure session management and API access.
+Secure user authentication system with role-based access control. Users can login, and access features. 
 
 ### Session Management
-Efficient session handling that maintains user state across the application. Sessions are securely managed with automatic token refresh and logout functionality for enhanced security.
+Efficient session handling that maintains user state across the application. Sessions are securely managed with automatic token refresh and logout functionality;  for enhanced security. JWT tokens ensure secure session management and API access.
 
 ### Risk Assessment Dashboard
 Interactive dashboard displaying real-time travel risk levels for various destinations with color-coded alerts and timestamps.
