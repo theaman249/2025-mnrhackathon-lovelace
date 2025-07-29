@@ -6,15 +6,15 @@ const jwt = require('jsonwebtoken');
 const data = require('../data/queries');
 
 // Mock model 
-const users = [
-  {
-    _id: '12345',
-    firstname: 'Jane',
-    lastname: 'Doe',
-    email: 'janedoe@gmail.com',
-    password: '$2b$10$kqiaOX3U0WPpeBEGG40Vp.ZB/yXGIlPEBk.U3fENbnhxZ3nqQSdnm'
-  }
-];
+// const users = [
+//   {
+//     _id: '12345',
+//     firstname: 'Jane',
+//     lastname: 'Doe',
+//     email: 'janedoe@gmail.com',
+//     password: '$2b$10$kqiaOX3U0WPpeBEGG40Vp.ZB/yXGIlPEBk.U3fENbnhxZ3nqQSdnm'
+//   }
+// ];
 
 router.post('/login', async (req, res) => {
     //console.log('Login request received:', req.body);
@@ -23,7 +23,7 @@ router.post('/login', async (req, res) => {
 
       const user = await data.getUser(email);
 
-      console.log(user);
+      //console.log(user);
 
       if (!user) {
         console.log('User not found:', email);
@@ -48,9 +48,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// No real server action needed
 router.post('/logout', (req, res) => {
-  // Client should delete token locally
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
