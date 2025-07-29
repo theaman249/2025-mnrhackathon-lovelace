@@ -41,6 +41,10 @@ jobs:
         run: npm install
         working-directory: ./backend
 
+      - name: Run database setup
+        run: npm run database_setup
+        working-directory: ./backend
+
       - name: Run Jest tests
         run: npm test
         working-directory: ./backend
