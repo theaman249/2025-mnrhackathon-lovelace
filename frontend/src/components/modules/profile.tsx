@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useAuth } from '@/lib/auth-context'
+import axios from 'axios'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -26,12 +27,13 @@ interface UserPreferences {
 }
 
 export function UserProfile() {
-  const { user } = useAuth()
+  const { user, token } = useAuth()
   const fileInputRef = useRef<HTMLInputElement>(null)
   
   // Form states
   const [formData, setFormData] = useState({
     name: user?.name || '',
+    surname: user?.surname || '',
     email: user?.email || '',
     currentPassword: '',
     newPassword: '',
@@ -91,19 +93,71 @@ export function UserProfile() {
   }
 
   const handleProfileSave = async () => {
+    // Validation
+    if (!formData.name.trim() || !formData.surname.trim() || !formData.email.trim()) {
+      alert('Please fill in all required fields')
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address')
+      return
+    }
+
+    if (!user?.id || !token) {
+      alert('User authentication error. Please login again.')
+      return
+    }
+
     setIsLoading(true)
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Prepare data for API
+      const updateData = {
+        id: user.id,
+        name: formData.name.trim(),
+        surname: formData.surname.trim(),
+        email: formData.email.trim()
+      }
+
+      // Make API call with authorization header
+      const response = await axios.post(
+        '/profile/updatePersonalPreferences',  // Remove the full URL
+        updateData,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+
+      if (response.status === 200) {
+        alert('Profile updated successfully!')
+        
+        // Update user data in localStorage if needed
+        const updatedUser = {
+          ...user,
+          name: formData.name.trim(),
+          surname: formData.surname.trim(),
+          email: formData.email.trim()
+        }
+        localStorage.setItem('user', JSON.stringify(updatedUser))
+        
+        console.log('Profile update response:', response.data)
+      }
+    } catch (error: any) {
+      console.error('Error updating profile:', error)
       
-      // Here you would make actual API calls to save the data
-      console.log('Saving profile:', { formData, preferences, profileImage })
-      
-      alert('Profile updated successfully!')
-    } catch (error) {
-      console.error('Error saving profile:', error)
-      alert('Failed to update profile')
+      if (error.response?.status === 401) {
+        alert('Authentication failed. Please login again.')
+      } else if (error.response?.data?.message) {
+        alert(`Failed to update profile: ${error.response.data.message}`)
+      } else {
+        alert('Failed to update profile. Please try again.')
+      }
     } finally {
       setIsLoading(false)
     }
@@ -211,7 +265,7 @@ export function UserProfile() {
                 <Avatar className="w-24 h-24">
                   <AvatarImage src={profileImage || undefined} />
                   <AvatarFallback className="text-xl">
-                    {user?.name?.charAt(0).toUpperCase() || 'U'}
+                    {user?.name?.charAt(0).toUpperCase()}{user?.surname?.charAt(0).toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 
@@ -262,16 +316,28 @@ export function UserProfile() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name">First Name</Label>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    placeholder="Enter your full name"
+                    placeholder="Enter your first name"
+                    disabled={isLoading}
                   />
                 </div>
                 
                 <div className="space-y-2">
+                  <Label htmlFor="surname">Last Name</Label>
+                  <Input
+                    id="surname"
+                    value={formData.surname}
+                    onChange={(e) => handleInputChange('surname', e.target.value)}
+                    placeholder="Enter your last name"
+                    disabled={isLoading}
+                  />
+                </div>
+                
+                <div className="md:col-span-2 space-y-2">
                   <Label htmlFor="email">Email Address</Label>
                   <Input
                     id="email"
@@ -279,6 +345,7 @@ export function UserProfile() {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="Enter your email"
+                    disabled={isLoading}
                   />
                 </div>
               </div>
