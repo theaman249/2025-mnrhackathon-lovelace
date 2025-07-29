@@ -6,7 +6,7 @@ let token;
 beforeAll(async () => {
   const res = await request(app)
     .post('/auth/login')
-    .send({ email: 'janedoe@gmail.com', password: 'pass' });
+    .send({ email: 'jane@atlas.co.za', password: 'pass' });
 
   token = res.body.token;
 });
@@ -37,5 +37,20 @@ describe('Protected route', () => {
 
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('Protected route accessed: Dashboard');
+  });
+
+  it('should deny access to profile without token', async () => {
+    const res = await request(app).get('/profile');
+    expect(res.statusCode).toBe(401);
+  });
+
+  it('should deny access to preferences without token', async () => {
+    const res = await request(app).get('/profile/preferences');
+    expect(res.statusCode).toBe(401);
+  });
+
+  it('should deny access to dashboard without token', async () => {
+    const res = await request(app).get('/dashboard');
+    expect(res.statusCode).toBe(401);
   });
 });
