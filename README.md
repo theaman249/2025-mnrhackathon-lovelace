@@ -93,15 +93,31 @@ Then interact with the system as was intended.
 
 ## Atlas Tests
 
+-Unit and integration tests are done using Jest. 
+
+-They test the authentication flow (login/logout, protected routes), database connection and basic CRUD operations.
+
+-The tests are automated using Github actions. A worklfow script runs the tests when changes are pushed to the develop and main branches.
+
+
+Test results:
+
+<img width="400" height="80" alt="res1" src="https://github.com/user-attachments/assets/8b591ea0-daa9-4350-91e1-0a1f1093d372" />
+
+<img width="400" height="35" alt="res2" src="https://github.com/user-attachments/assets/dd61507f-1b4c-44d9-b0ec-02efb61631dc" />
+
+<img width="400" height="35" alt="res3" src="https://github.com/user-attachments/assets/e77d3e42-4679-45db-a3f3-f4d7a16e288e" />
+
+<img width="400" height="35" alt="res4" src="https://github.com/user-attachments/assets/fa5c8d19-278b-45db-9110-1f71091809ec" />
+
+<img width="300" height="100" alt="image" src="https://github.com/user-attachments/assets/ce880de2-7cf7-4c46-8fc9-b3fb4d169110" />
+
+
 To run the test suite:
 
 ```bash
 # Backend tests
 cd backend
-npm test
-
-# Frontend tests
-cd frontend
 npm test
 ```
 
