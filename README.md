@@ -31,7 +31,12 @@ Interactive dashboard displaying real-time travel risk levels for various destin
 Comprehensive subsystem for changes made in the database, including additions and deletions.
 
 ### User Profile & Preferences
-User friendly settings. Users can edit their profiles and customise their preferences.
+User-friendly settings. Users can edit their profiles and customise their preferences.
+
+## Pre-requisites
+
+1. PostgreSQL 14 or later
+2. Nodejs v22.5.1 or later
 
 ## Set Up and Run Atlas
 
@@ -41,21 +46,24 @@ User friendly settings. Users can edit their profiles and customise their prefer
     git clone https://github.com/theaman249/2025-mnrhackathon-lovelace
     cd 2025-mnrhackathon-lovelace
     ```
+2. Set up the database
 
-2. Set up the backend directory
+    ```bash
+    cd backend
+    In the .env file, modify the following variables accordingly:
+    - PG_USER_NAME: PostgreSQL server name user name
+    - PG_HOST: host of your PostgreSQL instance host e.g. localhost
+    - PG_PASSWORD: PostgreSQL instance password
+    - PG_PORT: PostgreSQL instance's running port
+    ```
+
+3. Set up the backend and database scripts
 
     ```bash
     cd backend
     npm install
-    npm run dev 
-    ```
-
-3. Set up the database in a new terminal
-
-    ```bash
-    cd backend
-    npm run db:setup
-    npm run db:migrate
+    npm run database_setup 
+    node index.js
     ```
 
 4. Set up the frontend directory - in a new terminal
