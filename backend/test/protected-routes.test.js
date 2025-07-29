@@ -8,7 +8,8 @@ beforeAll(async () => {
     .post('/auth/login')
     .send({ email: 'jane@atlas.co.za', password: 'pass' });
 
-  token = res.body.token;
+  token = res.body.jwt_token;
+  //console.log('Token:', token); 
 });
 
 describe('Protected route', () => {

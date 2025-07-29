@@ -8,7 +8,7 @@ describe('Auth endpoints', () => {
       .send({ email: 'jane@atlas.co.za', password: 'pass' });
 
     expect(res.statusCode).toBe(200);
-    expect(res.body).toHaveProperty('token');
+    expect(res.body).toHaveProperty('jwt_token');
   });
 
   it('should fail with wrong email', async () => {
