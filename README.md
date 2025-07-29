@@ -10,11 +10,16 @@ Atlas is a comprehensive platform for managing travel risk alerts and assessment
 
 <img src="img/react-512.webp" width="60">   <img src="img/Node.js_logo.svg" width="80">   <img src="img/postgresql.png" width="60">
 
-**Frontend:** React - Provides a responsive and dynamic user interface for seamless user interaction
+**Frontend:** React 
+  - Provides a responsive and dynamic user interface for seamless user interaction
 
-**Backend:** Node.js - Handles server-side logic, API endpoints, and database connectivity
+**Backend:** Node.js
+  - Handles server-side logic, API endpoints, and database connectivity
+  - Allows the creation of a simple, structured backend api using the express framework.
 
-**Database:** PostgreSQL - Robust relational database for storing travel risk data and user information
+**Database:** PostgreSQL:
+  - Robust relational database for storing travel risk data and user information
+  - PostgreSQL provides the best of both Object-Oriented features, like inheritance, and the structure that traditional SQL brings.
 
 ## Atlas Features
 
@@ -22,7 +27,7 @@ Atlas is a comprehensive platform for managing travel risk alerts and assessment
 Secure user authentication system with role-based access control. Users can login, and access features. 
 
 ### Session Management
-Efficient session handling that maintains user state across the application. Sessions are securely managed with automatic token refresh and logout functionality;  for enhanced security. JWT tokens ensure secure session management and API access.
+For our session management, we are using JWT tokens. In this approach, we are using the email and user id to sign the tokens.
 
 ### Risk Assessment Dashboard
 Interactive dashboard displaying real-time travel risk levels for various destinations with color-coded alerts and timestamps.
