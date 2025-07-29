@@ -7,6 +7,7 @@ const profileRoute = require('./routes/profile');
 const dashboardRoute = require('./routes/dashboard');
 
 const data = require('./data/queries');
+const dataUpdate = require('./data/updates');
 
 app.use(express.json());
 
@@ -25,11 +26,23 @@ app.listen(port, () => {
 });
 
 
-// app.get('/getAllUsers', async(req,res) =>{
-//   //console.log(data.getAllUsers());
+app.get('/test', (req, res) => {
+  dataUpdate.updatePersonalPreferences(4, {
+    name: "rendi",
+    surname: "marsh"
+  })
+  .then(updatedUser => {
+    res.status(200).send({
+      message: "User updated successfully",
+      user: updatedUser
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).send({ error: "Failed to update user" });
+  });
+});
 
-//   res.status(200).send(await data.getAllUsers())
-// });
 
 app.get('/healthCheck', async(req,res) =>{
 
