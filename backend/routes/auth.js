@@ -1,11 +1,9 @@
-//for register and login endpoints.
-
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const data = require('../data/queries');
 
 // Mock model 
 const users = [
@@ -21,24 +19,29 @@ const users = [
 router.post('/login', async (req, res) => {
     //console.log('Login request received:', req.body);
     try {
-        const { email, password } = req.body;
-        const user = users.find(u => u.email === email);
+      const { email, password } = req.body;
 
-        if (!user) {
-            console.log('User not found:', email);
-            return res.status(401).json({ error: 'Authentication failed: User not found' });
-        }
-        const passwordMatch = await bcrypt.compare(password, user.password);
-        
-        if (!passwordMatch) {
-            console.log('Incorrect password:', password);
-            return res.status(401).json({ error: 'Authentication failed: Incorrect Password' });
-        }
-        
-        const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, {
-        expiresIn: '1h',});
+      const user = await data.getUser(email);
 
-        res.status(200).json({ token });
+      console.log(user);
+
+      if (!user) {
+        console.log('User not found:', email);
+        return res.status(401).json({ error: 'Authentication failed: User not found' });
+      }
+
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      
+      if (!passwordMatch) {
+        console.log('Incorrect password:', password);
+        return res.status(401).json({ error: 'Authentication failed: Incorrect Password' });
+      }
+      
+      const token = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET, {
+      expiresIn: '1h',});
+
+      res.status(200).json({ token });
+
     } catch (error) {
         res.status(500).json({ error: 'Login failed' });
         console.log(error);
