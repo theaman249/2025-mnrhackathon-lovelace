@@ -1,17 +1,19 @@
 const { Client } = require('pg');
+require('dotenv').config();
 
 // Database initialization
 (async () => {
     const client = new Client({
-        user: 'postgres',
-        host: 'localhost',
-        password: 'admin',
-        port: 5432
+        user: process.env.PG_USER_NAME,
+        host: process.env.PG_HOST,
+        password: process.env.PG_PASSWORD,
+        port: process.PG_PORT,
     });
 
     try {
 
         console.log(`Running Database script...`);
+        console.log(process.env.PG_HOST);
 
         await client.connect();
         
@@ -33,10 +35,10 @@ const { Client } = require('pg');
         await client.end(); 
 
         const dbClient = new Client({
-            user: 'postgres',
-            host: 'localhost',
-            password: 'admin',
-            port: 5432,
+            user: process.env.PG_USER_NAME,
+            host: process.env.PG_HOST,
+            password: process.env.PG_PASSWORD,
+            port: process.PG_PORT,
             database: dbName, // Now connect to "genesis"
         });
 

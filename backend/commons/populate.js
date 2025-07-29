@@ -1,10 +1,11 @@
 const {Client } = require('pg');
+require('dotenv').config();
 
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    password: 'admin',
-    port: 5432,
+    user: process.env.PG_USER_NAME,
+    host: process.env.PG_HOST,
+    password: process.env.PG_PASSWORD,
+    port: process.PG_PORT,
     database: 'genesis'
 });
 
@@ -30,6 +31,7 @@ const client = new Client({
                 ('Ada', 'Lovelace', 'ada@workbench.co.za', 'Password@123'),
                 ('Stephan', 'Grunner', 'profg@workbench.co.za', 'Password@123'),
                 ('Rendani', 'Krugger', 'rendi@workbench.co.za', 'Password@123');
+                ('Jane', 'Doe', 'jane@atlas.co.za', '$2b$10$kqiaOX3U0WPpeBEGG40Vp.ZB/yXGIlPEBk.U3fENbnhxZ3nqQSdnm');
         `);
 
         const result = await client.query(`SELECT * FROM users`);

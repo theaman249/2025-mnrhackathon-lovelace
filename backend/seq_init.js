@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('genesis', 'postgres', 'admin', {
-    host: 'localhost',
+const sequelize = new Sequelize('genesis', process.env.PG_USER_NAME , process.env.PG_PASSWORD, {
+    host: process.env.PG_HOST,
     dialect: 'postgres',
     port: 5432
 });
