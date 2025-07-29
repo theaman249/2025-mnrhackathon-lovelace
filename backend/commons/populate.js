@@ -29,7 +29,8 @@ const client = new Client({
                 ('Jensen', 'Huang', 'jensen@workbench.co.za', 'Password@123'),
                 ('Ada', 'Lovelace', 'ada@workbench.co.za', 'Password@123'),
                 ('Stephan', 'Grunner', 'profg@workbench.co.za', 'Password@123'),
-                ('Rendani', 'Krugger', 'rendi@workbench.co.za', 'Password@123');
+                ('Rendani', 'Krugger', 'rendi@workbench.co.za', 'Password@123'),
+                ('Jane', 'Doe', 'jane@atlas.co.za', '$2b$10$kqiaOX3U0WPpeBEGG40Vp.ZB/yXGIlPEBk.U3fENbnhxZ3nqQSdnm');
         `);
 
         const result = await client.query(`SELECT * FROM users`);
