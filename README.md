@@ -79,6 +79,18 @@ User-friendly settings. Users can edit their profiles and customise their prefer
     npm run dev 
     ```
 
+## Interacting with the system
+
+### login
+
+For the login, please use:
+ - email: jane@atlas.co.za
+ - password: pass
+
+### After login
+Then interact with the system as was intended.
+
+
 ## Atlas Tests
 
 To run the test suite:
