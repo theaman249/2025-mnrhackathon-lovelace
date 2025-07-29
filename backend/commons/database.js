@@ -51,10 +51,23 @@ const { Client } = require('pg');
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL
             );
+
+            CREATE TABLE IF NOT EXISTS notifications (
+                timestamp TIMESTAMPTZ DEFAULT NOW(),
+                title VARCHAR(255),
+                status VARCHAR (255)
+            );
+
+            CREATE TABLE IF NOT EXISTS monitored_destinations (
+                id SERIAL PRIMARY KEY,
+                location VARCHAR(255),
+                risk_level VARCHAR(100),
+                last_checked TIMESTAMPTZ
+            );
             `
         );
 
-        console.log('Table "users" created successfully.');
+        console.log('tables created successfully.');
 
         await dbClient.end();
         
