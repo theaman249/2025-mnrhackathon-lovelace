@@ -23,13 +23,13 @@ const client = new Client({
 
         // Insert default users
         await client.query(`
-        INSERT INTO users
-            (name, surname, email, password)
-        VALUES
-            ('Jensen', 'Huang', 'jensen@workbench.co.za', 'Password@123'),
-            ('Ada', 'Lovelace', 'ada@workbench.co.za', 'Password@123'),
-            ('Stephan', 'Grunner', 'profg@workbench.co.za', 'Password@123'),
-            ('Rendani', 'Krugger', 'rendi@workbench.co.za', 'Password@123');
+            INSERT INTO users
+                (name, surname, email, password)
+            VALUES
+                ('Jensen', 'Huang', 'jensen@workbench.co.za', 'Password@123'),
+                ('Ada', 'Lovelace', 'ada@workbench.co.za', 'Password@123'),
+                ('Stephan', 'Grunner', 'profg@workbench.co.za', 'Password@123'),
+                ('Rendani', 'Krugger', 'rendi@workbench.co.za', 'Password@123');
         `);
 
         const result = await client.query(`SELECT * FROM users`);
