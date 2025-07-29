@@ -9,6 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      PGUSER: postgres
+      PGPASSWORD: admin
+      PGHOST: localhost
+      PGPORT: 5432
+      PGDATABASE: genesis
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: genesis
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,6 +39,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./backend
+
+      - name: Run database setup
+        run: npm run database_setup
         working-directory: ./backend
 
       - name: Run Jest tests
