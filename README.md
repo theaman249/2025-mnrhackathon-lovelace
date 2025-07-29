@@ -1,117 +1,85 @@
-# `Atlas - by Lovelace` 
+# Atlas - by Lovelace
 
 <div align="center">
   <img src="img/lovelace.jpg" width="250"><br><br>
 </div>
 
-Atlas is a comprehensive platform for managing travel risk alerts and assessments. This system enables users to seamlessly interact with database assets that store risk levels for various destinations. It's a tool that can be utalized by travel agents and organizations to plan trips and evaluate insurance policies to take. Atlas is a A product of #MonkeyAndRiverHackathon2025
+Atlas is a comprehensive platform for managing travel risk alerts and assessments. This system enables users to seamlessly interact with database assets that store risk levels for various destinations. It's a tool that can be utilized by travel agents and organizations to plan trips and evaluate insurance policies to take. Atlas is a product of #MonkeyAndRiverHackathon2025
 
+## Tech Stack
 
-# Tech Stack
-<div style="display: flex; gap: 20px; align-items: center">
-    <div>
-        <img src="img/react-512.webp" width="60"> 
-    </div>
-    <div>
-        <img src="img/Node.js_logo.svg" width="80"> 
-    </div>
-    <div>
-        <img src="img/postgresql.png" width="60"> 
-    </div>
-</div>
-{reasons for tech stack here I guess}
+<img src="img/react-512.webp" width="60"> <img src="img/Node.js_logo.svg" width="80"> <img src="img/postgresql.png" width="60">
 
-# Atlas Features
+**Frontend:** React - Provides a responsive and dynamic user interface for seamless user interaction
+
+**Backend:** Node.js - Handles server-side logic, API endpoints, and database connectivity
+
+**Database:** PostgreSQL - Robust relational database for storing travel risk data and user information
+
+## Atlas Features
+
 ### Authentication and Authorization
-[explain here]
+Secure user authentication system with role-based access control. Users can register, login, and access features based on their permissions level. JWT tokens ensure secure session management and API access.
 
 ### Session Management
-[explain here]
+Efficient session handling that maintains user state across the application. Sessions are securely managed with automatic token refresh and logout functionality for enhanced security.
 
-# Set Up and Run Atlas
-1. Clone the repo 
+### Risk Assessment Dashboard
+Interactive dashboard displaying real-time travel risk levels for various destinations with color-coded alerts and detailed risk breakdowns.
 
-    ```
+### Travel Planning Tools
+Comprehensive tools for planning safe travel routes, including risk timeline analysis and alternative destination suggestions.
+
+## Set Up and Run Atlas
+
+1. Clone the repository
+
+    ```bash
     git clone https://github.com/theaman249/2025-mnrhackathon-lovelace
     cd 2025-mnrhackathon-lovelace
     ```
 
-2. Set Up the backend directory
+2. Set up the backend directory
 
-    ```
+    ```bash
     cd backend
     npm install
     npm run dev 
     ```
 
-3. Set Up the database in a new terminal
+3. Set up the database in a new terminal
 
-     ```
+    ```bash
     cd backend
-    npm install
-    npm run dev 
+    npm run db:setup
+    npm run db:migrate
     ```
 
-4. Set Up the frontend directory - in a new terminal
+4. Set up the frontend directory - in a new terminal
 
-     ```
+    ```bash
     cd frontend
     npm install
     npm run dev 
     ```
 
-# Atlas Tests
-Note: GUYS HELP ME YYOOOHHH
+## Atlas Tests
 
-# Meet the Team (a.k.a Lovelies)
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;">
-  
-  <!-- Row 1, Column 1 -->
-  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-    <img width="80" height="80" src="img/Agape.jpeg" style="border-radius: 50%; margin-bottom: 15px;">
-    <h4 style="margin: 5px 0;">Agape Mamphasa</h4>
-    <p style="margin: 5px 0;"><strong>Role(s):</strong> Backend Engineer, Integration Engineer</p>
-    <p style="margin: 5px 0;">BSc(Hons) Computer Science Graduate</p>
-    <div style="margin-top: 10px;">
-      <a href="https://www.linkedin.com/in/agape-mamphasa-92022a2a9/">LinkedIn</a> | 
-      <a href="https://github.com/theaman249">GitHub</a>
-    </div>
-  </div>
-  
-  <!-- Row 1, Column 2 -->
-  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-    <img width="80" height="80" src="img/amanda.jfif" style="border-radius: 50%; margin-bottom: 15px;">
-    <h4 style="margin: 5px 0;">Amanda Khuzwayo</h4>
-    <p style="margin: 5px 0;"><strong>Role(s):</strong> Backend Engineer, Integration Engineer</p>
-    <p style="margin: 5px 0;">BSc(Hons) Computer Science Student </p>
-    <div style="margin-top: 10px;">
-      <a href="https://www.linkedin.com/in/amanda-khuzwayo-894130135/">LinkedIn</a> | 
-      <a href="https://github.com/Amanda9805">GitHub</a>
-    </div>
-  </div>
-  
-  <!-- Row 2, Column 1 -->
-  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-    <img width="80" height="80" src="img/mbofho.jfif" style="border-radius: 50%; margin-bottom: 15px;">
-    <h4 style="margin: 5px 0;">Mbofho Mamatsharaga</h4>
-    <p style="margin: 5px 0;"><strong>Role(s):</strong> Frontend Engineer, Integration Engineer</p>
-    <p style="margin: 5px 0;">BSc(Hons) Computer Science Student </p>
-    <div style="margin-top: 10px;">
-      <a href="https://www.linkedin.com/in/mbofho-mamatsharaga-54992823b/">LinkedIn</a> | 
-      <a href="https://github.com/TheStoryOfChampion">GitHub</a>
-    </div>
-  </div>
-  
-  <!-- Row 2, Column 2 -->
-  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-    <img width="80" height="80" src="img/kea.jpg" style="border-radius: 50%; margin-bottom: 15px;">
-    <h4 style="margin: 5px 0;">Keabetswe Mothapo</h4>
-    <p style="margin: 5px 0;"><strong>Role(s):</strong> Frontend Engineer, Integration Engineer</p>
-    <p style="margin: 5px 0;">Bsc Information & Knowledge Systems Graduate</p>
-    <div style="margin-top: 10px;">
-      <a href="https://www.linkedin.com/in/mbofho-mamatsharaga-54992823b/">LinkedIn</a> | 
-      <a href="https://github.com/keamothapo">GitHub</a>
-    </div>
-  </div>
-  
-</div>
+To run the test suite:
+
+```bash
+# Backend tests
+cd backend
+npm test
+
+# Frontend tests
+cd frontend
+npm test
+```
+
+## Meet the Team (a.k.a Lovelies)
+
+| | |
+|:---:|:---:|
+| <img src="img/Agape.jpeg" width="120" style="border-radius: 50%"><br>**Agape Mamphasa**<br>*Backend Engineer, Integration Engineer*<br>BSc(Hons) Computer Science Graduate<br>[LinkedIn](https://www.linkedin.com/in/agape-mamphasa-92022a2a9/) \| [GitHub](https://github.com/theaman249) | <img src="img/amanda.jfif" width="120" style="border-radius: 50%"><br>**Amanda Khuzwayo**<br>*Backend Engineer, Integration Engineer*<br>BSc(Hons) Computer Science Student<br>[LinkedIn](https://www.linkedin.com/in/amanda-khuzwayo-894130135/) \| [GitHub](https://github.com/Amanda9805) |
+| <img src="img/mbofho.jfif" width="120" style="border-radius: 50%"><br>**Mbofho Mamatsharaga**<br>*Frontend Engineer, Integration Engineer*<br>BSc(Hons) Computer Science Student<br>[LinkedIn](https://www.linkedin.com/in/mbofho-mamatsharaga-54992823b/) \| [GitHub](https://github.com/TheStoryOfChampion) | <img src="img/kea.jpg" width="120" style="border-radius: 50%"><br>**Keabetswe Mothapo**<br>*Frontend Engineer, Integration Engineer*<br>BSc Information & Knowledge Systems Graduate<br>[LinkedIn](https://www.linkedin.com/in/keabetswe-mothapo/) \| [GitHub](https://github.com/keamothapo) |
