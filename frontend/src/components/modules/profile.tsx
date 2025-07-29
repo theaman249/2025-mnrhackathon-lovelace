@@ -117,14 +117,16 @@ export function UserProfile() {
       // Prepare data for API
       const updateData = {
         id: user.id,
-        name: formData.name.trim(),
-        surname: formData.surname.trim(),
-        email: formData.email.trim()
+         data: {
+          name: formData.name.trim(),
+          surname: formData.surname.trim(),
+          email: formData.email.trim()
+        }
       }
 
       // Make API call with authorization header
       const response = await axios.post(
-        '/profile/updatePersonalPreferences',  // Remove the full URL
+        '/profile/preferences',  // Remove the full URL
         updateData,
         {
           headers: {
@@ -135,7 +137,7 @@ export function UserProfile() {
       )
 
       if (response.status === 200) {
-        alert('Profile updated successfully!')
+         alert('Profile updated successfully!')
         
         // Update user data in localStorage if needed
         const updatedUser = {
@@ -146,7 +148,8 @@ export function UserProfile() {
         }
         localStorage.setItem('user', JSON.stringify(updatedUser))
         
-        console.log('Profile update response:', response.data)
+        // console.log('Profile update response:', response.data)
+        window.location.reload()
       }
     } catch (error: any) {
       console.error('Error updating profile:', error)
