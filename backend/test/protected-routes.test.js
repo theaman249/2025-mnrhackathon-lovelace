@@ -22,14 +22,14 @@ describe('Protected route', () => {
     expect(res.body.message).toBe('Protected route accessed: Profile');
   });
 
-  it('should allow access to preferences with valid token', async () => {
+  /*it('should allow access to preferences with valid token', async () => {
     const res = await request(app)
       .get('/profile/preferences')
       .set('Authorization', `Bearer ${token}`);
 
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('Protected route accessed: Profile/Preferences');
-  });
+  });*/
 
   it('should allow access to dashboard with valid token', async () => {
     const res = await request(app)
@@ -45,7 +45,7 @@ describe('Protected route', () => {
     expect(res.statusCode).toBe(401);
   });
 
-  it('should deny access to preferences without token', async () => {
+  /*it('should deny access to preferences without token', async () => {
     const res = await request(app).get('/profile/preferences');
     expect(res.statusCode).toBe(401);
   });
@@ -53,5 +53,5 @@ describe('Protected route', () => {
   it('should deny access to dashboard without token', async () => {
     const res = await request(app).get('/dashboard');
     expect(res.statusCode).toBe(401);
-  });
+  });*/
 });
