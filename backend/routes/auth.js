@@ -47,7 +47,6 @@ router.post('/login', async (req, res) => {
         email: user.email,
         jwt_token: token
       });
-
     } catch (error) {
         res.status(500).json({ error: 'Login failed' });
         console.log(error);
